@@ -1,0 +1,38 @@
+SET SERVEROUTPUT ON;
+	DECLARE
+	    TYPE inBlock_vry IS VARRAY (5) OF NUMBER;
+        vry_obj inBlock_vry  :=  inBlock_vry();
+    BEGIN
+		vry_obj.EXTEND(5); 
+		vry_obj(1):= 10*2;
+		DBMS_OUTPUT.PUT_LINE(vry_obj(1));    
+	END;
+	/
+	DECLARE
+	    TYPE inBlock_vry IS VARRAY (5) OF NUMBER;
+        vry_obj inBlock_vry  :=  inBlock_vry();
+    BEGIN
+	    FOR i IN 1 .. vry_obj.LIMIT
+	    LOOP
+ 		   vry_obj.EXTEND;
+           vry_obj (i):= 10*i;    
+		   DBMS_OUTPUT.PUT_LINE (vry_obj (i));    
+	    END LOOP;
+    END;
+	/
+    CREATE OR REPLACE TYPE VARREY_OBJ IS VARRAY(5) OF NUMBER;
+    /
+    CREATE TABLE VARREY_DAYDATE
+    (VDAY_NAME VARCHAR2(10),
+    VDAY_DATE  VARREY_OBJ);
+    /
+    INSERT INTO VARREY_DAYDATE 
+    VALUES('SUNDAY', VARREY_OBJ(10,20,30,40,50));
+    /
+    SELECT * FROM VARREY_DAYDATE;
+    /
+    --TABLE EXPERESSIONS
+    SELECT 
+          TAB1.VDAY_NAME,
+          VRY.COLUMN_VALUE
+          FROM VARREY_DAYDATE TAB1, TABLE (TAB1.VDAY_DATE)VRY;

@@ -1,0 +1,30 @@
+SET SERVEROUTPUT ON;
+DECLARE
+ v_num    NUMBER := &enter_a_number;
+BEGIN
+ IF MOD (v_num, 2) = 0 THEN
+ DBMS_OUTPUT.PUT_LINE (v_num || ‘ Is Even’);
+ELSE
+ DBMS_OUTPUT.PUT_LINE (v_num ||’ is odd’);
+END IF;
+ DBMS_OUTPUT.PUT_LINE (‘IF THEN ELSE Construct complete ‘);
+END;
+
+The previous tutorial was all about IF-THEN statement in Oracle PL/SQL. 
+There we learnt that a simple IF-THEN statement enables us to specify the 
+sequence of statements to be executed only if the condition is evaluated to 
+be true. In case this condition is evaluated to be false then no special 
+action is to be taken except to proceed with execution of the program.
+
+To overcome this drawback in oracle PL/SQL we have IF-THEN-ELSE statement 
+widely pronounced as IF-ELSE statement.
+
+With IF-THEN-ELSE in PL/SQL we have two groups of executable statements, 
+one which gets executed if the condition is evaluated to be true and another 
+group gets executed if the condition is evaluated to be false. Once the 
+IF-THEN-ELSE construct gets completed the next statement right after 
+IF-THEN-ELSE block is executed.
+
+
+
+

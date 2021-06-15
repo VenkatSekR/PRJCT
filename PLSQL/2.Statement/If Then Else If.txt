@@ -1,0 +1,25 @@
+DECLARE
+ v_Place VARCHAR2(30) := ‘&Enter Place’;
+BEGIN
+ IF v_Place = ‘Metropolis’ THEN
+ DBMS_OUTPUT.PUT_LINE(‘This City Is Protected By Superman’);
+ELSIF v_Place = ‘Gotham’ THEN
+ DBMS_OUTPUT.PUT_LINE(‘This City is Protected By Batman’);
+ELSIF v_Place = ‘Amazon’ THEN
+DBMS_OUTPUT.PUT_LINE(‘This City is protected by Wonder Woman’);
+ELSE
+DBMS_OUTPUT.PUT_LINE(‘Please Call Avengers’);
+END IF;
+DBMS_OUTPUT.PUT_LINE(‘Thanks For Contacting us’);
+END;
+
+In the previous tutorial we saw that IF ELSE condition gives us the 
+provision of executing statements not only when the condition is 
+evaluated to be true but also when the condition is evaluated to be false. 
+But using IF ELSE statement we can only check one condition at a time, 
+there is no provision for checking multiple conditions. This becomes 
+its major drawback.
+
+To overcome this we have IF THEN ELSIF condition in Oracle PL/SQL. 
+Using this statement you can check multiple conditions unlike the 
+IF conditions discussed in the previous tutorials.

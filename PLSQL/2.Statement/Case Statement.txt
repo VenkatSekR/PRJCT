@@ -1,0 +1,15 @@
+DECLARE
+    v_name     VARCHAR2(30) := 'KING';
+    v_number   NUMBER;
+BEGIN
+    v_number :=
+        CASE v_name
+            WHEN 'SAM' THEN
+                0.1
+            WHEN 'JAMES' THEN
+                0.2
+            ELSE 0
+        END;
+
+    dbms_output.put_line('YOUR NUMBER IS : ' || v_number);
+END;

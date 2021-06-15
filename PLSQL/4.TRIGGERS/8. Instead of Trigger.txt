@@ -1,0 +1,38 @@
+CREATE [OR REPLACE] TRIGGER trigger_name
+INSTEAD OF operation
+ON view_name
+FOR EACH ROW
+BEGIN
+	---Your SQL Code—
+END;
+/
+
+Table 1- trainer
+
+CREATE TABLE trainer
+  ( 
+    full_name VARCHAR2(20)
+  );
+Table 2- Subject
+
+CREATE TABLE subject
+  ( 
+    subject_name VARCHAR2(15)
+  );
+
+Insert dummy data into the above tables
+
+INSERT INTO trainer VALUES ('Manish Sharma');
+INSERT INTO subject VALUES ('Oracle');
+
+CREATE VIEW vw_rebellionrider AS
+SELECT full_name, subject_name FROM trainer, subject;
+
+
+CREATE OR REPLACE TRIGGER tr_Io_Insert
+INSTEAD OF INSERT ON vw_rebellionrider
+FOR EACH ROW
+BEGIN
+  INSERT INTO trainer (full_name) VALUES (:new.full_name);
+  INSERT INTO subject (subject_name) VALUES (:new.subject_name);
+END

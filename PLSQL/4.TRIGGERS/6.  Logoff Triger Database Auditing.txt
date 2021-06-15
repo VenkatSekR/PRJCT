@@ -1,0 +1,51 @@
+Schema Level: 
+
+CREATE TABLE db_evnt_audit
+  (
+    event_type VARCHAR2(30),
+    logon_date DATE,
+    logon_time VARCHAR2(15),
+    logof_date DATE,
+    logof_time VARCHAR2(15)
+  );
+
+CREATE OR REPLACE TRIGGER DBASCHEMAAUDIT_TRG
+BEFORE LOGOFF ON SCHEMA
+BEGIN
+INSERT INTO DBASCHEMA_AUDIT VALUES
+(ORA_SYSEVENT,
+NULL,
+NULL,
+SYSDATE,
+TO_CHAR(SYSDATE, 'HH24:MI:SS')
+);
+COMMIT;
+END;
+/
+
+DB Level:
+
+CREATE TABLE db_evnt_audit
+  (
+    User_name VARCHAR2(15),
+    event_type VARCHAR2(30),
+    logon_date DATE,
+    logon_time VARCHAR2(15),
+    logof_date DATE,
+    logof_time VARCHAR2(15)
+  );
+
+CREATE OR REPLACE TRIGGER db_lgof_audit
+BEFORE LOGOFF ON DATABASE
+BEGIN
+  INSERT INTO db_evnt_audit 
+  VALUES(
+    user,
+    ora_sysevent,
+    NULL,
+    NULL,
+    SYSDATE,
+    TO_CHAR(sysdate, 'hh24:mi:ss')
+    );
+END;
+/

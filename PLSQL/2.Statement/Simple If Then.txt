@@ -1,0 +1,28 @@
+SET SERVEROUTPUT ON;
+DECLARE
+  v_num NUMBER := 9;
+BEGIN
+IF v_num < 10 THEN
+ DBMS_OUTPUT.PUT_LINE(‘Inside The IF’);
+ END IF;
+ DBMS_OUTPUT.PUT_LINE(‘outside The IF’);
+END;
+/
+
+DECLARE
+v_website VARCHAR2(30) := ‘RebellionRider.com’;
+v_author  VARCHAR2(30) := ‘Manish’;
+BEGIN
+IF v_website =’RebellionRider.com’ AND  v_author= ‘Manish’ THEN
+DBMS_OUTPUT.PUT_LINE(‘Everything is Awesome :)’);
+END IF;
+DBMS_OUTPUT.PUT_LINE(‘Give this Video a Thumbs Up’);
+END;
+/
+
+Working
+When an IF-THEN statement is executed a condition is evaluated to either 
+True or False. If the condition evaluates to true, control is passed to the 
+first executable statement of the IF-THEN construct. If the condition evaluates 
+to false, control is passed to the first executable statement after the END-IF 
+statement.
